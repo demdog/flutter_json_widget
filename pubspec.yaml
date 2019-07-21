@@ -1,7 +1,7 @@
 name: json_viewer
 description: A Json viewer widget for flutter.
 version: 1.0.0
-author: Apigj
+author: Apigj<demdog@hotmail.com>
 homepage: https://github.com/demdog/flutter_json_widget
 
 environment:

@@ -1,4 +1,4 @@
-library flutter_json_widget;
+library json_viewer;
 
 import 'package:flutter/material.dart';
 

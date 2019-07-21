@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:json_viewer/flutter_json_widget.dart';
+import 'package:json_viewer/json_viewer.dart';
 
 void main() => runApp(MyApp());
 
