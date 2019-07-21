@@ -1,4 +1,4 @@
-library json_viewer;
+library flutter_json_widget;
 
 import 'package:flutter/material.dart';
 
@@ -222,7 +222,6 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
             child: Text('[$index]', style:TextStyle(color: Colors.purple[900])),
             onTap: (){
               setState(() {
-                print('QQQ:'+index.toString());
                 openFlag[index] = !(openFlag[index]??false);
               });
             }

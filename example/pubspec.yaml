@@ -28,7 +28,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
     
-  json_viewer:
+  flutter_json_widget:
     path: ../
 
 # For information on the generic Dart part of this file, see the
