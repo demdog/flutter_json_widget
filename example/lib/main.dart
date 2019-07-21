@@ -49,30 +49,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   Map<String, dynamic> jsonObj;
+  BuildContext tContext;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     var testString = '''{
-      "ParaString": "sahgozkad",
+      "ParaString": "www.apigj.com",
       "ParaObject": {
-        "ObjectType": "laeg",
-        "ObjectName": "bek",
-        "ObjectId": "cosoljim",
-        "FatherId": "wef"
+        "ObjectType": "Api",
+        "ObjectName": "Manager",
+        "ObjectId": "Code",
+        "FatherId": "Generator"
       },
       "ParaLong": 6222123188092928,
       "ParaInt": 5303,
       "ParaFloat": -268311581425.664,
       "ParaBool": false,
       "ParaArrString": [
-        "diedo",
-        "cigow"
+        "easy",
+        "fast"
       ],
       "ParaArrObj": [
         {
-          "SParaString": "ferpatbal",
+          "SParaString": "Work efficiently",
           "SParaLong": 7996655703949312,
           "SParaInt": 8429,
           "SParaFloat": -67669103057.3056,
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ]
         },
         {
-          "SParaString": "jujaz",
+          "SParaString": "Let's go",
           "SParaLong": 641970970034176,
           "SParaInt": 37,
           "SParaFloat": 556457726574.592,
@@ -160,11 +160,18 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: JsonViewerWidget(jsonObj)
-      ),
-     );
+      body: Builder(
+        builder: (context) {
+          tContext = context;
+          return SafeArea(
+            child: SingleChildScrollView(
+                // Center is a layout widget. It takes a single child and positions it
+                // in the middle of the parent.
+                child: JsonViewerWidget(jsonObj)
+            ),
+          );
+        }
+      )
+    );
   }
 }
