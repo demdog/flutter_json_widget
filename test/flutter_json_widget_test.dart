@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_json_widget/flutter_json_widget.dart';
+import 'package:json_viewer/flutter_json_widget.dart';
 
 void main() {
 //  test('adds one to input values', () {
