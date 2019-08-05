@@ -14,7 +14,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  flutter_json_widget: ^1.0.1
+  flutter_json_widget: ^1.0.2
 ```
 
 ### 2. Install it
