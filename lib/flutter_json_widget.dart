@@ -39,7 +39,9 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       bool ex = isExtensible(entry.value);
       bool ink = isInkWell(entry.value);
       list.add(
-        Row(children: <Widget>[
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
           ex?((openFlag[entry.key]??false)?Icon(Icons.arrow_drop_down, size: 14, color: Colors.grey[700]):Icon(Icons.arrow_right, size: 14, color: Colors.grey[700])):const Icon(Icons.arrow_right, color: Color.fromARGB(0, 0, 0, 0),size: 14,),
           (ex&&ink)?InkWell(
             child: Text(entry.key, style:TextStyle(color: Colors.purple[900])),
@@ -93,15 +95,15 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
 
   getValueWidget(MapEntry entry){
     if(entry.value == null){
-      return Text('undefined', style: TextStyle(color: Colors.grey),);
+      return Expanded(child: Text('undefined', style: TextStyle(color: Colors.grey),));
     }else if (entry.value is int){
-      return Text(entry.value.toString(), style: TextStyle(color: Colors.teal),);
+      return Expanded(child: Text(entry.value.toString(), style: TextStyle(color: Colors.teal),));
     }else if (entry.value is String) {
-      return Text('\"'+entry.value+'\"', style: TextStyle(color: Colors.redAccent),);
+      return Expanded(child: Text('\"'+entry.value+'\"', style: TextStyle(color: Colors.redAccent),));
     } else if (entry.value is bool) {
-      return Text(entry.value.toString(), style: TextStyle(color: Colors.purple),);
+      return Expanded(child: Text(entry.value.toString(), style: TextStyle(color: Colors.purple),));
     } else if (entry.value is double) {
-      return Text(entry.value.toString(), style: TextStyle(color: Colors.teal),);
+      return Expanded(child: Text(entry.value.toString(), style: TextStyle(color: Colors.teal),));
     } else if(entry.value is List){
       if(entry.value.isEmpty){
         return Text('Array[0]', style: TextStyle(color: Colors.grey),);
@@ -183,8 +185,8 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       );
     }
     return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: _getList());
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: _getList());
   }
 
   @override
@@ -200,13 +202,16 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       bool ex = JsonViewerWidgetState.isExtensible(content);
       bool ink = JsonViewerWidgetState.isInkWell(content);
       list.add(
-        Row(children: <Widget>[
-          ex?((openFlag[i]??false)?Icon(Icons.arrow_drop_down, size: 14, color: Colors.grey[700]):Icon(Icons.arrow_right, size: 14, color: Colors.grey[700])):const Icon(Icons.arrow_right, color: Color.fromARGB(0, 0, 0, 0),size: 14,),
-          (ex&&ink)?getInkWell(i):Text('[$i]', style:TextStyle(color: content==null?Colors.grey:Colors.purple[900])),
-          Text(':', style: TextStyle(color: Colors.grey),),
-          const SizedBox(width: 3),
-          getValueWidget(content, i)
-        ],)
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            ex?((openFlag[i]??false)?Icon(Icons.arrow_drop_down, size: 14, color: Colors.grey[700]):Icon(Icons.arrow_right, size: 14, color: Colors.grey[700])):const Icon(Icons.arrow_right, color: Color.fromARGB(0, 0, 0, 0),size: 14,),
+            (ex&&ink)?getInkWell(i):Text('[$i]', style:TextStyle(color: content==null?Colors.grey:Colors.purple[900])),
+            Text(':', style: TextStyle(color: Colors.grey),),
+            const SizedBox(width: 3),
+            getValueWidget(content, i)
+          ],
+        )
       );
       list.add(const SizedBox(height: 4));
       if(openFlag[i]??false){
@@ -219,45 +224,45 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
 
   getInkWell(int index){
     return InkWell(
-            child: Text('[$index]', style:TextStyle(color: Colors.purple[900])),
-            onTap: (){
-              setState(() {
-                openFlag[index] = !(openFlag[index]??false);
-              });
-            }
-          );
+      child: Text('[$index]', style:TextStyle(color: Colors.purple[900])),
+      onTap: (){
+        setState(() {
+          openFlag[index] = !(openFlag[index]??false);
+        });
+      }
+    );
   }
 
   getValueWidget(dynamic content, int index){
     if(content == null){
-      return Text('undefined', style: TextStyle(color: Colors.grey),);
+      return Expanded(child: Text('undefined', style: TextStyle(color: Colors.grey),));
     }else if (content is int){
-      return Text(content.toString(), style: TextStyle(color: Colors.teal),);
+      return Expanded(child: Text(content.toString(), style: TextStyle(color: Colors.teal),));
     }else if (content is String) {
-      return Text('\"'+content+'\"', style: TextStyle(color: Colors.redAccent),);
+      return Expanded(child: Text('\"'+content+'\"', style: TextStyle(color: Colors.redAccent),));
     } else if (content is bool) {
-      return Text(content.toString(), style: TextStyle(color: Colors.purple),);
+      return Expanded(child: Text(content.toString(), style: TextStyle(color: Colors.purple),));
     } else if (content is double) {
-      return Text(content.toString(), style: TextStyle(color: Colors.teal),);
+      return Expanded(child: Text(content.toString(), style: TextStyle(color: Colors.teal),));
     } else if(content is List){
       if(content.isEmpty){
         return Text('Array[0]', style: TextStyle(color: Colors.grey),);
       }else {
         return InkWell(
-            child: Text('Array<${JsonViewerWidgetState.getTypeName(content)}>[${content.length}]', style: TextStyle(color: Colors.grey),),
-            onTap: (){
-              setState(() {
-                openFlag[index] = !(openFlag[index]??false);
-              });
+          child: Text('Array<${JsonViewerWidgetState.getTypeName(content)}>[${content.length}]', style: TextStyle(color: Colors.grey),),
+          onTap: (){
+            setState(() {
+              openFlag[index] = !(openFlag[index]??false);
             });
+          });
       }
     }
     return InkWell(
-            child: Text('Object', style: TextStyle(color: Colors.grey),),
-            onTap: (){
-              setState(() {
-                openFlag[index] = !(openFlag[index]??false);
-              });
-            });
+      child: Text('Object', style: TextStyle(color: Colors.grey),),
+      onTap: (){
+        setState(() {
+          openFlag[index] = !(openFlag[index]??false);
+        });
+      });
   }
 }
