@@ -1,6 +1,4 @@
 name: example
-description: A example for json view widget.
-
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -11,7 +9,7 @@ description: A example for json view widget.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.2
+version: 1.0.3
 
 description: A Json viewer widget for flutter. Shows json data in an extensible list. Makes data readable on the phone easily.
 
