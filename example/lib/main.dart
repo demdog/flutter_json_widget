@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
         true
       ]
     }''';
-    jsonObj = jsonDecode(testString);
+    jsonObj = jsonDecode(testString) as Map<String, dynamic>;
   }
 
   @override
@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SingleChildScrollView(
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
-                child: JsonViewerWidget(jsonObj)
+                child: JsonViewerWidget(jsonObj, false)
             ),
           );
         }
