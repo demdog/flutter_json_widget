@@ -203,7 +203,7 @@ class JsonArrayViewerWidget extends StatefulWidget {
 
   final bool? notRoot;
 
-  JsonArrayViewerWidget(this.jsonArray, {this.notRoot});
+  JsonArrayViewerWidget(this.jsonArray, {this.notRoot = false});
 
   @override
   _JsonArrayViewerWidgetState createState() =>
@@ -229,7 +229,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   @override
   void initState() {
     super.initState();
-    openFlag = []..length = widget.jsonArray.length;
+    openFlag = List.filled(widget.jsonArray.length, false);
   }
 
   _getList() {
